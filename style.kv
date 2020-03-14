@@ -1,0 +1,194 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+<Main>:
+    name: 'main'
+    FloatLayout:
+        id: layout1
+        canvas.before:
+            Color:
+                rgba: get_color_from_hex('#FFFFFF')
+            Rectangle:
+                pos: self.pos
+                size: self.size         
+
+        BoxLayout:
+            orientation: 'vertical'
+            index:0
+
+            GridLayout:
+                id: header
+                cols:2
+                pos_hint: {'top':0}
+                size_hint_y: .098
+                spacing:0
+
+                Button:
+                    id: btn_title
+                    bold: True
+                    background_normal: ''
+                    background_down: ''
+                    color: get_color_from_hex('#000000')
+                    background_color: get_color_from_hex('#2196F3')
+                    size_hint_x: .15
+                    on_press:
+                        root.menu_anim_open()
+
+                    StackLayout:
+                        pos: self.parent.pos
+                        size: self.parent.size
+                        orientation: 'lr-tb'
+                        padding: [20,0,0,0]
+
+                        Label:
+                            bold: True
+                            text_size:self.size
+                            color: get_color_from_hex('#ffffff')
+                            halign:'left'
+                            valign:'middle'
+                            text: 'Template'
+
+            ScrollView:
+                size: self.size
+                index:9
+                id: master
+
+            GridLayout:
+                id: grid_btn
+                background_normal: ''
+                cols:3
+                bold: True
+                pos_hint: {'bottom':0}
+                size_hint_y: .098
+                spacing:0
+
+                Button:
+                    id: btn_camera
+                    background_normal: ''
+                    background_down: ''
+                    background_color: get_color_from_hex('#212121')
+                    font_name: 'font/fontello.ttf'
+                    font_size: (self.width/4.8)
+                    text: ''
+                    bold: True
+                    color: get_color_from_hex('#ffffff')
+                    on_press:
+                        root.camera_screen()
+
+                Button:
+                    id: btn_home
+                    background_normal: ''
+                    background_down: ''
+                    background_color: get_color_from_hex('#212121')
+                    font_name: 'font/fontello.ttf'
+                    font_size: (self.width/4.8)
+                    text: ''
+                    bold: True
+                    color: get_color_from_hex('#ffffff')
+                    on_press:
+                        root.home_screen()                    
+
+                Button:
+                    id: btn_user
+                    background_normal: ''
+                    background_down: ''
+                    background_color: get_color_from_hex('#212121')
+                    font_name: 'font/fontello.ttf'
+                    font_size: (self.width/4.8)
+                    text: ''
+                    bold: True
+                    color: get_color_from_hex('#ffffff')                                  
+                    on_press:
+                        root.user_screen()   
+
+        GridLayout:
+            id: side_menu
+            cols: 1
+            pos: ((root.height*-1)*1.2,0)
+            spacing: 0
+            index: 9
+            row_default_height: self.height * 0.1
+            row_force_default: True
+            size_hint_x: .8
+
+            Button:
+                id: btn_side_menu_title
+                background_normal: ''
+                background_down: ''
+                background_color: get_color_from_hex('#455A64')
+                text: 'Side Menu'
+                bold: True
+                color: get_color_from_hex('#ffffff')
+
+            Button:
+                id: btn_side_menu_option1
+                background_normal: ''
+                background_color: get_color_from_hex('#607D8B')
+                text: 'Option 1'
+                bold: True
+                color: get_color_from_hex('#ffffff')
+
+            Button:
+                id: btn_side_menu_option2
+                background_normal: ''
+                background_color: get_color_from_hex('#607D8B')
+                text: 'Option 2'
+                bold: True
+                color: get_color_from_hex('#ffffff')
+
+            Button:
+                id: btn_side_menu_option3
+                background_normal: ''
+                background_color: get_color_from_hex('#607D8B')
+                text: 'Option 3'
+                bold: True
+                color: get_color_from_hex('#ffffff')                                
+
+            Button:
+                id: btn_side_menu_option4
+                background_normal: ''
+                background_color: get_color_from_hex('#607D8B')
+                text: 'Option 4'
+                bold: True
+                color: get_color_from_hex('#ffffff')                
+
+            Button:
+                id: btn_side_menu_option5
+                background_normal: ''
+                background_color: get_color_from_hex('#607D8B')
+                text: 'Option 5'
+                bold: True
+                color: get_color_from_hex('#ffffff')                
+
+            Button:
+                id: btn_side_menu_option6
+                background_normal: ''
+                background_color: get_color_from_hex('#607D8B')
+                text: 'Option 7'
+                bold: True
+                color: get_color_from_hex('#ffffff')                
+
+            Button:
+                id: btn_side_menu_option8
+                background_normal: ''
+                background_color: get_color_from_hex('#607D8B')
+                text: 'Option 8'
+                bold: True
+                color: get_color_from_hex('#ffffff')                 
+
+            Button:
+                id: btn_side_menu_option9
+                background_normal: ''
+                background_color: get_color_from_hex('#607D8B')
+                text: 'Option 9'
+                bold: True
+                color: get_color_from_hex('#ffffff')                  
+
+            Button:
+                id: btn_side_menu_close
+                background_normal: ''
+                background_down: ''
+                background_color: get_color_from_hex('#455A64')
+                bold: True
+                text: 'Close'
+                color: get_color_from_hex('#ffffff')       
+                on_press:
+                    root.menu_anim_close()           
