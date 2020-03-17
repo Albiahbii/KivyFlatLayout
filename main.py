@@ -115,7 +115,7 @@ class Main(Screen):
             add_widget(lbl_user) 
 
     def menu_anim_open(self):
-        anim_layout = Animation(x=250,duration=0.2)
+        anim_layout = Animation(x=self.manager.get_screen('main').ids.master.width/1.25,duration=0.2)
         anim_layout.start(self.manager.get_screen('main').ids.header)
         anim_layout.start(self.manager.get_screen('main').ids.master)
         anim_layout.start(self.manager.get_screen('main').ids.grid_btn)
