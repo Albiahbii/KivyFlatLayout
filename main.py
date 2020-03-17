@@ -10,7 +10,6 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.button import Button
 from kivy.weakproxy import WeakProxy
 from kivy.animation import Animation
-
 Window.size = (320,600)
 
 kvfile = Builder.load_file('style.kv')
@@ -68,19 +67,20 @@ class Main(Screen):
         lbl_home = Label()
         lbl_home.id = 'lbl_home'
         lbl_home.color = get_color_from_hex('#212121')
-        lbl_home.text = 'Home Layout'
+        lbl_home.text = 'Home Layout'                    
 
         self.manager.get_screen('main').ids[home_layout.id] = \
             WeakProxy(home_layout)
 
         self.manager.get_screen('main').ids[lbl_home.id] = \
-            WeakProxy(lbl_home)
+            WeakProxy(home_layout)
 
         self.manager.get_screen('main').ids.master.\
             add_widget(home_layout)
 
-        self.manager.get_screen('main').ids.home_layout.\
-            add_widget(lbl_home)          
+        self.manager.get_screen('main').ids.lbl_home.\
+            add_widget(lbl_home)                        
+
 
     def user_screen(self):
         self.manager.get_screen('main').ids.btn_camera.color = get_color_from_hex('#FFFFFF')
@@ -115,12 +115,16 @@ class Main(Screen):
             add_widget(lbl_user) 
 
     def menu_anim_open(self):
-        anim = Animation(x=0)
-        anim.start(self.manager.get_screen('main').ids.side_menu)
+        anim_layout = Animation(x=250,duration=0.2)
+        anim_layout.start(self.manager.get_screen('main').ids.header)
+        anim_layout.start(self.manager.get_screen('main').ids.master)
+        anim_layout.start(self.manager.get_screen('main').ids.grid_btn)
 
     def menu_anim_close(self):
-        anim = Animation(x=(self.manager.get_screen('main').ids.layout1.height*-1)*1.2)
-        anim.start(self.manager.get_screen('main').ids.side_menu)        
+        anim_layout = Animation(x=0,duration=0.2)
+        anim_layout.start(self.manager.get_screen('main').ids.header)
+        anim_layout.start(self.manager.get_screen('main').ids.master)
+        anim_layout.start(self.manager.get_screen('main').ids.grid_btn)
 
 sm = ScreenManager()
 sm.add_widget(Main(name='main'))
